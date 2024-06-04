@@ -12,13 +12,20 @@ export const HelpdeskUI = ({ request }: { request?: Helpdesk }) => {
   }[priority];
 
   return (
-    <div className="bg-white border border-slate-100 rounded-md my-4 max-w-prose">
-      <div className="uppercase rounded-t-md text-xs font-bold bg-slate-200 p-2">
-        {priorityEmoji}: Helpdesk Ticket
+    <div>
+      <div className="uppercase font-bold bg-white pt-4 pb-8">
+        🐞 Helpdesk Ticket
       </div>
 
+      <div className="bg-slate-50 px-4 py-2 font-bold rounded-md">Details</div>
       <div className="p-4">
         <ul className="space-y-4">
+          <li>
+            <p className="font-bold">Priority:</p>
+            <p>
+              {priorityEmoji} {priority}
+            </p>
+          </li>
           <li>
             <p className="font-bold">Request Title:</p>
             <p>{title}</p>

@@ -1,10 +1,39 @@
+/* Base */
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+:root {
+  --primary: white;
+  --secondary: black;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 15px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 14px;
+  border: 3px solid var(--primary);
+}
 
 body {
   @apply font-sans antialiased text-black;
 }
+
+/* Components */
+@tailwind components;
 
 @layer components {
   .max-container {
@@ -15,6 +44,9 @@ body {
     @apply bg-black text-white py-2 px-4 font-semibold rounded;
   }
 }
+
+/* Utilities */
+@tailwind utilities;
 
 @layer utilities {
   .text-balance {

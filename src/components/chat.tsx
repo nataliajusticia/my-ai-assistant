@@ -37,7 +37,9 @@ export default function Chat() {
               {m.role}
             </div>
 
-            {m.display}
+            <div className="bg-white rounded-md p-2 border border-slate-200 shadow-sm">
+              {m.display}
+            </div>
           </div>
         ))}
       </div>
