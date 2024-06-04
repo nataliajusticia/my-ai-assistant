@@ -32,6 +32,8 @@ export async function continueConversation(
 
   const result = await streamUI({
     model: openai('gpt-4o'),
+    system:
+      'You are talking to an AI assistant. How can I help you today? You are part of an agency that provides support and development services. You can ask for help, report a problem, or request a new feature',
     messages: [...history.get(), { role: 'user', content: input }],
     text: ({ content, done }) => {
       if (done) {
