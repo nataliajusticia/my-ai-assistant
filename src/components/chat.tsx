@@ -37,9 +37,13 @@ export default function Chat() {
               {m.role}
             </div>
 
-            <div className="bg-white rounded-md p-2 border border-slate-200 shadow-sm">
-              {m.display}
-            </div>
+            {m.role === 'user' ? (
+              <div className="bg-white rounded-md p-2 border border-slate-200 shadow">
+                {m.display}
+              </div>
+            ) : (
+              m.display
+            )}
           </div>
         ))}
       </div>

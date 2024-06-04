@@ -12,7 +12,7 @@ export const HelpdeskUI = ({ request }: { request?: Helpdesk }) => {
   }[priority];
 
   return (
-    <div>
+    <div className="bg-white rounded-md p-2 border border-slate-200 shadow">
       <div className="uppercase font-bold bg-white pt-4 pb-8">
         🐞 Helpdesk Ticket
       </div>

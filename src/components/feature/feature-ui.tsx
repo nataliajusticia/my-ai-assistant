@@ -24,7 +24,7 @@ export const FeatureUI = ({ request }: { request?: Feature }) => {
   }[type];
 
   return (
-    <div>
+    <div className="bg-white rounded-md p-2 border border-slate-200 shadow">
       <div className="uppercase font-bold bg-white pt-4 pb-8">
         💡 Feature Request
       </div>
@@ -79,12 +79,6 @@ export const FeatureUI = ({ request }: { request?: Feature }) => {
           </li>
         </ul>
       </div>
-
-      <hr className="border-slate-200" />
-      <p className="p-4">
-        We will review your feature request and get back to you as soon as we
-        can.
-      </p>
     </div>
   );
 };

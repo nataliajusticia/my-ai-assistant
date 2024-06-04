@@ -41,11 +41,16 @@ export async function continueConversation(
         ]);
       }
 
-      return <div className="prose">{content}</div>;
+      return (
+        <div className="bg-white rounded-md p-2 border border-slate-200 shadow">
+          {content}
+        </div>
+      );
     },
     tools: {
       helpdesk: {
-        description: 'Create a helpdesk ticket',
+        description:
+          'Create a helpdesk ticket based on the user input. Normally used to report a problem or ask for help.',
         parameters: z.object({
           title: z.string().describe('the title of the helpdesk request'),
           content: z
@@ -61,19 +66,28 @@ export async function continueConversation(
           const request = await generateObject({
             model: openai('gpt-4o'),
             schema: helpdeskSchema,
-            prompt:
-              'Create a helpdesk ticket with the following title, content and priority:' +
-              title +
-              content +
-              priority,
+            prompt: `Create a helpdesk ticket based on the user input and return it to the user.
+              The request should be based on the following details:
+              Title: [Automatically generated based on content]
+              Content: ${content}
+              Priority: ${priority ? priority : '[Automatically assigned]'}`,
           });
 
-          return <HelpdeskUI request={request.object} />;
+          return (
+            <>
+              <HelpdeskUI request={request.object} />
+
+              <div className="text-sm text-gray-500 mt-4">
+                The helpdesk ticket has been created. A support agent will
+                contact you shortly.
+              </div>
+            </>
+          );
         },
       },
       feature: {
         description:
-          'Create a feature request based on the user input and return it to the user with an estimation of the cost and time to implement the feature.',
+          'Create a feature request based on the user input and return it to the user with an estimation of the cost and time to implement the feature. Normally used to request a new feature or improvement.',
         parameters: z.object({
           title: z.string().describe('the title of the feature request'),
           content: z
@@ -138,7 +152,16 @@ export async function continueConversation(
             `,
           });
 
-          return <FeatureUI request={request.object} />;
+          return (
+            <>
+              <FeatureUI request={request.object} />
+
+              <div className="text-sm text-gray-500 mt-4">
+                The feature request has been created. An agent will review the
+                request and get back to you as soon as possible.
+              </div>
+            </>
+          );
         },
       },
     },
