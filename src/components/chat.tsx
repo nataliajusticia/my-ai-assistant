@@ -70,7 +70,7 @@ export default function Chat() {
                         id: nanoid(),
                         role: 'user',
                         display:
-                          'Our website is currently down and inaccessible to all users. When attempting to access the site, users are met with a "500 Internal Server Error" message. This is severely impacting our business operations as clients are unable to access critical services. Immediate assistance is required to identify and resolve the issue. Please investigate and restore the website as soon as possible.',
+                          'Our website www.netnode.ch is currently down and inaccessible to all users. When attempting to access the site, users are met with a "500 Internal Server Error" message. This is severely impacting our business operations as clients are unable to access critical services. Immediate assistance is required to identify and resolve the issue. Please investigate and restore the website as soon as possible.',
                       },
                     ]);
 
@@ -112,7 +112,7 @@ export default function Chat() {
                     ]);
                   }}
                 >
-                  ✨ Feature Request
+                  ✨ Slider Feature Request
                 </button>
               </li>
             </ul>
