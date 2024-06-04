@@ -46,6 +46,78 @@ export default function Chat() {
             )}
           </div>
         ))}
+
+        {conversation.length === 0 && (
+          <>
+            <div className="bg-white rounded-md p-4 border border-slate-200 shadow mt-4">
+              <div className="text-center text-lg font-bold">
+                Welcome your AI assistant!
+              </div>
+              <div className="text-center">
+                Start by typing something in the input below.
+              </div>
+            </div>
+
+            <ul className="grid grid-cols-2 gap-4 mt-4">
+              <li>
+                <button
+                  className="btn-primary w-full"
+                  onClick={async () => {
+                    setInput('');
+                    setConversation((currentConversation: ClientMessage[]) => [
+                      ...currentConversation,
+                      {
+                        id: nanoid(),
+                        role: 'user',
+                        display:
+                          'Our website is currently down and inaccessible to all users. When attempting to access the site, users are met with a "500 Internal Server Error" message. This is severely impacting our business operations as clients are unable to access critical services. Immediate assistance is required to identify and resolve the issue. Please investigate and restore the website as soon as possible.',
+                      },
+                    ]);
+
+                    const message = await continueConversation(
+                      'Our website is currently down and inaccessible to all users. When attempting to access the site, users are met with a "500 Internal Server Error" message. This is severely impacting our business operations as clients are unable to access critical services. Immediate assistance is required to identify and resolve the issue. Please investigate and restore the website as soon as possible.'
+                    );
+
+                    setConversation((currentConversation: ClientMessage[]) => [
+                      ...currentConversation,
+                      message,
+                    ]);
+                  }}
+                >
+                  🐞 My site is down
+                </button>
+              </li>
+              <li>
+                <button
+                  className="btn-primary w-full"
+                  onClick={async () => {
+                    setInput('');
+                    setConversation((currentConversation: ClientMessage[]) => [
+                      ...currentConversation,
+                      {
+                        id: nanoid(),
+                        role: 'user',
+                        display:
+                          'I need a new feature. We need to develop a new slider component for the homepage of our website. The slider should be responsive, support multiple images, and include navigation controls. Additionally, it should have autoplay functionality with adjustable speed settings. The design should align with our current website theme and be easy to update with new images and content. The slider should also be optimized for performance to ensure quick loading times and smooth transitions.',
+                      },
+                    ]);
+
+                    const message = await continueConversation(
+                      'I need a new feature. We need to develop a new slider component for the homepage of our website. The slider should be responsive, support multiple images, and include navigation controls. Additionally, it should have autoplay functionality with adjustable speed settings. The design should align with our current website theme and be easy to update with new images and content. The slider should also be optimized for performance to ensure quick loading times and smooth transitions.'
+                    );
+
+                    setConversation((currentConversation: ClientMessage[]) => [
+                      ...currentConversation,
+                      message,
+                    ]);
+                  }}
+                >
+                  ✨ Feature Request
+                </button>
+              </li>
+            </ul>
+          </>
+        )}
       </div>
 
       <div className="fixed inset-x-0 bottom-0 w-full">
